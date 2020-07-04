@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.tacorando.network.TacoApi
-import com.example.android.tacorando.network.TacoItem
+import com.example.android.tacorando.domain.TacoItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

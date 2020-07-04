@@ -2,7 +2,7 @@ package com.example.android.tacorando.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.android.tacorando.network.TacoItem
+import com.example.android.tacorando.domain.TacoItem
 
 @Entity
 data class DatabaseEntities constructor(
