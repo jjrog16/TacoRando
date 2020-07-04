@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.tacorando.network.TacoApi
+import com.example.android.tacorando.network.TacoItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,13 +25,13 @@ class TacoViewModel : ViewModel() {
 
     private fun getTacoRecipes() {
         // Call the TacoApi to enqueue the Retrofit request, implementing the callbacks
-        TacoApi.retrofitService.getTaco().enqueue(object: Callback<String> {
-            override fun onFailure(call: Call<String>, t: Throwable) {
+        TacoApi.retrofitService.getTaco().enqueue(object: Callback<List<TacoItem>> {
+            override fun onFailure(call: Call<List<TacoItem>>, t: Throwable) {
                 _response.value = "Failure: " + t.message
             }
 
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                _response.value = response.body()
+            override fun onResponse(call: Call<List<TacoItem>>, response: Response<List<TacoItem>>) {
+                _response.value = response.body()?.get(0).toString()
             }
         })
     }

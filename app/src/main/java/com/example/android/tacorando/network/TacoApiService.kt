@@ -25,7 +25,7 @@ var retrofit: Retrofit = Retrofit.Builder()
 interface TacoApiService {
     @GET("random/?full-taco=true")
     fun getTaco():
-            Call<String>
+            Call<List<TacoItem>>
 }
 
 // Create the TacoAPI object using Retrofit to implement the TacoApiService
