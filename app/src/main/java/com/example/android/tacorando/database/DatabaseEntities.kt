@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.android.tacorando.domain.TacoItem
 
 @Entity
-data class DatabaseEntities constructor(
+data class DatabaseTaco constructor(
     @PrimaryKey
     val url: String,
     val slug: String?,
@@ -14,7 +14,7 @@ data class DatabaseEntities constructor(
 )
 
 // Take what is in the database and make that the TacoItem
-fun List<DatabaseEntities>.asDomainModel(): List<TacoItem> {
+fun List<DatabaseTaco>.asDomainModel(): List<TacoItem> {
     return map {
         TacoItem(
             url = it.url,

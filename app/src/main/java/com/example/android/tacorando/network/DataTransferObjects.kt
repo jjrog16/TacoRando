@@ -1,5 +1,6 @@
 package com.example.android.tacorando.network
 
+import com.example.android.tacorando.database.DatabaseTaco
 import com.example.android.tacorando.domain.TacoItem
 import com.squareup.moshi.JsonClass
 
@@ -14,7 +15,7 @@ data class NetworkTacoContainer(val tacos: List<NetworkTaco>)
 
 @JsonClass(generateAdapter = true)
 data class NetworkTaco(
-    var url: String?,
+    var url: String,
     var slug: String?,
     var name: String?,
     var recipe: String?
@@ -32,5 +33,16 @@ fun NetworkTacoContainer.asDomainModel(): List<TacoItem> {
             recipe = it.recipe
         )
     }
+}
+
+fun NetworkTacoContainer.asDatabaseModel(): Array<DatabaseTaco> {
+    return tacos.map {
+        DatabaseTaco(
+            url = it.url,
+            slug = it.slug,
+            name = it.name,
+            recipe = it.recipe
+        )
+    }.toTypedArray()
 }
 
